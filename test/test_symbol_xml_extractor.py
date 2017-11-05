@@ -1,8 +1,7 @@
 # coding=utf-8
-from qgis.testing import start_app, unittest
-import nose2
+import unittest
 
-from qgis.core import (
+from qgis.core import (QGis,
     QgsVectorColorBrewerColorRampV2,
     QgsVectorGradientColorRampV2,
     QgsVectorRandomColorRampV2,
@@ -17,7 +16,7 @@ from utilities import test_data_path
 class TestSymbolXMLExtractor(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        start_app()
+        pass
 
     def test_parse_xml(self):
         """Test parsing the xml works correctly."""
@@ -36,6 +35,8 @@ class TestSymbolXMLExtractor(unittest.TestCase):
             'marker_simple': QgsMarkerSymbolV2,
             'marker_svg': QgsMarkerSymbolV2
         }
+        if QGis.QGIS_VERSION_INT < 21600:
+            expected_symbols.pop('line_arrow')
         self.assertEqual(len(extractor.symbols), len(expected_symbols))
         for symbol in extractor.symbols:
             self.assertTrue(
@@ -55,4 +56,4 @@ class TestSymbolXMLExtractor(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    nose2.main()
+    unittest.main()

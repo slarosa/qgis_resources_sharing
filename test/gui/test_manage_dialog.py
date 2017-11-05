@@ -1,18 +1,20 @@
 # coding=utf-8
-from qgis.testing import start_app, unittest
-import nose2
+import unittest
 
 from PyQt4.QtGui import QDialogButtonBox
 
+from test.utilities import test_repository_url, get_qgis_app
+
+QGIS_APP = get_qgis_app()
+
 from resource_sharing.gui.manage_dialog import ManageRepositoryDialog
-from test.utilities import test_repository_url
 
 
 class ManageDialogTest(unittest.TestCase):
     """Test dialog works."""
     @classmethod
     def setUpClass(cls):
-        start_app()
+        pass
 
     def setUp(self):
         """Runs before each test."""
@@ -34,4 +36,4 @@ class ManageDialogTest(unittest.TestCase):
             True)
 
 if __name__ == "__main__":
-    nose2.main()
+    unittest.main()
