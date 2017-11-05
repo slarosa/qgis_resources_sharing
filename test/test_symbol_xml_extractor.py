@@ -1,6 +1,6 @@
 # coding=utf-8
-from qgis.testing import start_app, unittest
-import nose2
+from qgis.testing import start_app
+import unittest
 
 from qgis.core import (
     QgsVectorColorBrewerColorRampV2,
@@ -55,4 +55,4 @@ class TestSymbolXMLExtractor(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    nose2.main()
+    unittest.main()
