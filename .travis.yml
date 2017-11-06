@@ -24,7 +24,7 @@ addons:
 install:
   - sudo add-apt-repository ${QGIS_REPO}
   - sudo apt-get update
-  - sudo apt-get install -y --force-yes qgis python-qgis pyhton-nose
+  - sudo apt-get install -y --force-yes qgis python-qgis python-nose
   # - sudo apt-get install python-nose
   - sudo -H pip install --upgrade pip
   # - sudo -H pip install coverage
