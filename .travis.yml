@@ -24,11 +24,12 @@ addons:
 install:
   - sudo add-apt-repository ${QGIS_REPO}
   - sudo apt-get update
-  - sudo apt-get install -y --force-yes qgis python-qgis
+  - sudo apt-get install -y --force-yes qgis python-qgis pyhton-nose
   # - sudo apt-get install python-nose
   - sudo -H pip install --upgrade pip
   # - sudo -H pip install coverage
-  - sudo -H pip install nose2==0.6.0
+  # - sudo -H pip install --upgrade nose
+  - sudo -H pip install --upgrade nose2==0.6.0
   # - sudo -H pip install rednose
   - sudo -H pip install --upgrade pycodestyle
   - sudo apt-get install pylint
@@ -42,8 +43,9 @@ before_script:
   - export LD_LIBRARY_PATH=${QGIS_PREFIX_PATH}/lib
 
 script:
+  - export PATH=/usr/bin:$PATH
   - pycodestyle resource_sharing --format=pylint --ignore=E741,E126
-  - QGIS_DEBUG=0 xvfb-run --server-args="-screen 0, 1024x768x24" nose2 -s qgis_resources_sharing/test -v
+  - QGIS_DEBUG=0 xvfb-run --server-args="-screen 0, 1024x768x24" nosetests -s ./test -v
 
 #after_success:
 #  - coveralls

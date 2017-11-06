@@ -1,6 +1,6 @@
 # coding=utf-8
-from qgis.testing import start_app, unittest
-import nose2
+from qgis.testing import start_app
+import unittest
 
 from PyQt4.QtGui import QDialogButtonBox
 
@@ -34,4 +34,4 @@ class ManageDialogTest(unittest.TestCase):
             True)
 
 if __name__ == "__main__":
-    nose2.main()
+    unittest.main()
